@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 5%;
+  --foreground: 0 0% 95%;
+  --primary: 170 77% 53%;
+  --secondary: 354 100% 71%;
+  --accent: 50 100% 68%;
+  --pixel-border: #29303b;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .pixel-corners {
+    clip-path: polygon(
+      0px 8px,
+      4px 8px,
+      4px 4px,
+      8px 4px,
+      8px 0px,
+      calc(100% - 8px) 0px,
+      calc(100% - 8px) 4px,
+      calc(100% - 4px) 4px,
+      calc(100% - 4px) 8px,
+      100% 8px,
+      100% calc(100% - 8px),
+      calc(100% - 4px) calc(100% - 8px),
+      calc(100% - 4px) calc(100% - 4px),
+      calc(100% - 8px) calc(100% - 4px),
+      calc(100% - 8px) 100%,
+      8px 100%,
+      8px calc(100% - 4px),
+      4px calc(100% - 4px),
+      4px calc(100% - 8px),
+      0px calc(100% - 8px)
+    );
+  }
+}
