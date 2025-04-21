@@ -1,20 +1,16 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useUser } from "@/context/user-context"
 import { useGameContext } from "@/context/game-context"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
-  const { pixelCoins = 0, achievements = [], collectibles = [] } = useGameContext() || { pixelCoins: 0, achievements: [], collectibles: [] }
-  const [displayedCoins, setDisplayedCoins] = useState(pixelCoins)
+  const { user } = useUser()
+  const { achievements = [], collectibles = [] } = useGameContext()
   const pathname = usePathname()
-
-  // Update displayed coins when pixelCoins changes
-  useEffect(() => {
-    setDisplayedCoins(pixelCoins)
-  }, [pixelCoins])
 
   const toggleMenu = () => {
     setIsOpen(!isOpen)
@@ -103,11 +99,11 @@ export default function Header() {
           <div className="hidden lg:flex items-center space-x-4">
             <div className="px-3 py-1 bg-[#1A1A1A] rounded-full flex items-center">
               <span className="text-[#FFE66D] mr-2">🪙</span>
-              <span className="text-white font-bold">{displayedCoins}</span>
+              <span className="text-white font-bold">{user?.pixels || 0}</span>
             </div>
             <div className="px-3 py-1 bg-[#1A1A1A] rounded-full flex items-center">
               <span className="text-[#FF6B6B] mr-2">🏆</span>
-              <span className="text-white font-bold">{achievements.length}</span>
+              <span className="text-white font-bold">{user?.achievements?.length || 0}</span>
             </div>
             <div className="px-3 py-1 bg-[#1A1A1A] rounded-full flex items-center">
               <span className="text-[#4ECDC4] mr-2">🎮</span>
@@ -213,11 +209,11 @@ export default function Header() {
             <div className="pt-4 flex justify-between px-3">
               <div className="px-3 py-1 bg-[#1A1A1A] rounded-full flex items-center">
                 <span className="text-[#FFE66D] mr-2">🪙</span>
-                <span className="text-white font-bold">{displayedCoins}</span>
+                <span className="text-white font-bold">{user?.pixels || 0}</span>
               </div>
               <div className="px-3 py-1 bg-[#1A1A1A] rounded-full flex items-center">
                 <span className="text-[#FF6B6B] mr-2">🏆</span>
-                <span className="text-white font-bold">{achievements.length}</span>
+                <span className="text-white font-bold">{user?.achievements?.length || 0}</span>
               </div>
               <div className="px-3 py-1 bg-[#1A1A1A] rounded-full flex items-center">
                 <span className="text-[#4ECDC4] mr-2">🎮</span>
