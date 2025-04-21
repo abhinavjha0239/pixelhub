@@ -19,6 +19,164 @@ interface MarketplaceItem {
   }
 }
 
+// Move marketplaceItems outside the component to avoid recreating it on each render
+const marketplaceItems: MarketplaceItem[] = [
+  {
+    id: "weapon_001",
+    name: "Pixel Blade",
+    type: "weapon",
+    rarity: "rare",
+    price: 3200,
+    image: "sword",
+    description:
+      "A legendary weapon forged in the pixel fires of the ancient digital realm. Grants the wielder enhanced attack power and a chance to inflict lightning damage.",
+    boostEffect: {
+      type: "score",
+      multiplier: 1.2,
+    },
+  },
+  {
+    id: "shield_001",
+    name: "Guardian Shield",
+    type: "armor",
+    rarity: "epic",
+    price: 6400,
+    image: "shield",
+    description:
+      "An epic shield that provides excellent protection against digital threats. Its pixel-perfect design intimidates enemies.",
+    boostEffect: {
+      type: "coins",
+      multiplier: 1.35,
+    },
+  },
+  {
+    id: "potion_001",
+    name: "Dragon Elixir",
+    type: "consumable",
+    rarity: "legendary",
+    price: 8500,
+    image: "potion",
+    description:
+      "A rare potion that temporarily grants the power of a pixel dragon. Increases all stats for a limited time.",
+    boostEffect: {
+      type: "xp",
+      multiplier: 1.5,
+    },
+  },
+  {
+    id: "pet_001",
+    name: "Pixel Companion",
+    type: "pet",
+    rarity: "epic",
+    price: 4800,
+    image: "pet",
+    description:
+      "A loyal pixel pet that follows you around the PixelVerse. Provides companionship and occasional bonuses.",
+    boostEffect: {
+      type: "coins",
+      multiplier: 1.25,
+    },
+  },
+  {
+    id: "hat_001",
+    name: "Wizard Hat",
+    type: "accessory",
+    rarity: "rare",
+    price: 2500,
+    image: "hat",
+    description: "A stylish wizard hat that enhances magical abilities. Perfect for spellcasting pixel wizards.",
+    boostEffect: {
+      type: "score",
+      multiplier: 1.15,
+    },
+  },
+  {
+    id: "amulet_002",
+    name: "Ancient Amulet",
+    type: "accessory",
+    rarity: "epic",
+    price: 5200,
+    image: "amulet",
+    description:
+      "An ancient amulet with mysterious powers. Glows with an otherworldly light in the presence of rare collectibles.",
+    boostEffect: {
+      type: "xp",
+      multiplier: 1.3,
+    },
+  },
+  {
+    id: "background_001",
+    name: "Mystic Landscape",
+    type: "background",
+    rarity: "legendary",
+    price: 7600,
+    image: "landscape",
+    description:
+      "A breathtaking pixel landscape that can be used as a profile background. Features animated elements.",
+  },
+  {
+    id: "character_001",
+    name: "Hero Character",
+    type: "character",
+    rarity: "rare",
+    price: 3900,
+    image: "character",
+    description: "A customizable hero character with unique animations and expressions. Stand out in the PixelVerse!",
+  },
+  {
+    id: "crown_001",
+    name: "Royal Crown",
+    type: "accessory",
+    rarity: "legendary",
+    price: 9800,
+    image: "hat",
+    description: "A majestic crown that symbolizes status in the PixelVerse. Grants the wearer royal treatment.",
+    boostEffect: {
+      type: "coins",
+      multiplier: 1.5,
+    },
+  },
+  {
+    id: "bracelet_001",
+    name: "Mystic Bracelet",
+    type: "accessory",
+    rarity: "epic",
+    price: 4700,
+    image: "amulet",
+    description: "A bracelet infused with ancient pixel magic. Enhances the wearer's abilities in gameplay.",
+    boostEffect: {
+      type: "score",
+      multiplier: 1.25,
+    },
+  },
+  {
+    id: "cape_001",
+    name: "Twilight Cape",
+    type: "armor",
+    rarity: "legendary",
+    price: 8200,
+    image: "landscape",
+    description: "A flowing cape made from twilight essence. Makes the wearer partially ethereal during gameplay.",
+    boostEffect: {
+      type: "xp",
+      multiplier: 1.4,
+    },
+  },
+  {
+    id: "boots_001",
+    name: "Swift Boots",
+    type: "armor",
+    rarity: "rare",
+    price: 3500,
+    image: "shield",
+    description: "Lightweight boots that enhance the wearer's agility. Perfect for those who love to move quickly.",
+    boostEffect: {
+      type: "score",
+      multiplier: 1.15,
+    },
+  },
+];
+
 export default function MarketplacePage() {
   const { user, addToInventory, addPixels, removePixels, addXP, addAchievement, completeQuest } = useUser()
   const { addPixelCoins, activeCollectibles, collectibles, toggleActiveCollectible } = useGameContext()
@@ -34,164 +192,17 @@ export default function MarketplacePage() {
   const [purchasedItem, setPurchasedItem] = useState<MarketplaceItem | null>(null)
   const [relatedQuests, setRelatedQuests] = useState<{ id: string; title: string; progress: number }[]>([])
 
-  const marketplaceItems: MarketplaceItem[] = [
-    {
-      id: "weapon_001",
-      name: "Pixel Blade",
-      type: "weapon",
-      rarity: "rare",
-      price: 3200,
-      image: "sword",
-      description:
-        "A legendary weapon forged in the pixel fires of the ancient digital realm. Grants the wielder enhanced attack power and a chance to inflict lightning damage.",
-      boostEffect: {
-        type: "score",
-        multiplier: 1.2,
-      },
-    },
-    {
-      id: "shield_001",
-      name: "Guardian Shield",
-      type: "armor",
-      rarity: "epic",
-      price: 6400,
-      image: "shield",
-      description:
-        "An epic shield that provides excellent protection against digital threats. Its pixel-perfect design intimidates enemies.",
-      boostEffect: {
-        type: "coins",
-        multiplier: 1.35,
-      },
-    },
-    {
-      id: "potion_001",
-      name: "Dragon Elixir",
-      type: "consumable",
-      rarity: "legendary",
-      price: 8500,
-      image: "potion",
-      description:
-        "A rare potion that temporarily grants the power of a pixel dragon. Increases all stats for a limited time.",
-      boostEffect: {
-        type: "xp",
-        multiplier: 1.5,
-      },
-    },
-    {
-      id: "pet_001",
-      name: "Pixel Companion",
-      type: "pet",
-      rarity: "epic",
-      price: 4800,
-      image: "pet",
-      description:
-        "A loyal pixel pet that follows you around the PixelVerse. Provides companionship and occasional bonuses.",
-      boostEffect: {
-        type: "coins",
-        multiplier: 1.25,
-      },
-    },
-    {
-      id: "hat_001",
-      name: "Wizard Hat",
-      type: "accessory",
-      rarity: "rare",
-      price: 2500,
-      image: "hat",
-      description: "A stylish wizard hat that enhances magical abilities. Perfect for spellcasting pixel wizards.",
-      boostEffect: {
-        type: "score",
-        multiplier: 1.15,
-      },
-    },
-    {
-      id: "amulet_002",
-      name: "Ancient Amulet",
-      type: "accessory",
-      rarity: "epic",
-      price: 5200,
-      image: "amulet",
-      description:
-        "An ancient amulet with mysterious powers. Glows with an otherworldly light in the presence of rare collectibles.",
-      boostEffect: {
-        type: "xp",
-        multiplier: 1.3,
-      },
-    },
-    {
-      id: "background_001",
-      name: "Mystic Landscape",
-      type: "background",
-      rarity: "legendary",
-      price: 7600,
-      image: "landscape",
-      description:
-        "A breathtaking pixel landscape that can be used as a profile background. Features animated elements.",
-    },
-    {
-      id: "character_001",
-      name: "Hero Character",
-      type: "character",
-      rarity: "rare",
-      price: 3900,
-      image: "character",
-      description: "A customizable hero character with unique animations and expressions. Stand out in the PixelVerse!",
-    },
-    {
-      id: "crown_001",
-      name: "Royal Crown",
-      type: "accessory",
-      rarity: "legendary",
-      price: 9800,
-      image: "hat",
-      description: "A majestic crown that symbolizes status in the PixelVerse. Grants the wearer royal treatment.",
-      boostEffect: {
-        type: "coins",
-        multiplier: 1.5,
-      },
-    },
-    {
-      id: "bracelet_001",
-      name: "Mystic Bracelet",
-      type: "accessory",
-      rarity: "epic",
-      price: 4700,
-      image: "amulet",
-      description: "A bracelet infused with ancient pixel magic. Enhances the wearer's abilities in gameplay.",
-      boostEffect: {
-        type: "score",
-        multiplier: 1.25,
-      },
-    },
-    {
-      id: "cape_001",
-      name: "Twilight Cape",
-      type: "armor",
-      rarity: "legendary",
-      price: 8200,
-      image: "landscape",
-      description: "A flowing cape made from twilight essence. Makes the wearer partially ethereal during gameplay.",
-      boostEffect: {
-        type: "xp",
-        multiplier: 1.4,
-      },
-    },
-    {
-      id: "boots_001",
-      name: "Swift Boots",
-      type: "armor",
-      rarity: "rare",
-      price: 3500,
-      image: "shield",
-      description: "Lightweight boots that enhance the wearer's agility. Perfect for those who love to move quickly.",
-      boostEffect: {
-        type: "score",
-        multiplier: 1.15,
-      },
-    },
-  ]
-
+  // Fix: Use useEffect with proper dependencies
   useEffect(() => {
+    // Set popular items only once as they don't depend on user
+    const popular = [...marketplaceItems]
+      .sort((a, b) => b.price - a.price)
+      .filter((item) => item.rarity === "legendary" || item.rarity === "epic")
+      .slice(0, 3)
+
+    setPopularItems(popular)
+
+    // Only update recommended items when user changes
     if (user) {
       const userItemTypes = new Set(user.inventory.map((item) => item.type))
       const missingTypes = ["weapon", "armor", "accessory", "pet", "consumable"].filter(
@@ -214,15 +225,9 @@ export default function MarketplacePage() {
 
       setRecommendedItems(recommended.slice(0, 3))
     }
+  }, [user?.inventory]); // Only depend on user.inventory, not the entire user object
 
-    const popular = [...marketplaceItems]
-      .sort((a, b) => b.price - a.price)
-      .filter((item) => item.rarity === "legendary" || item.rarity === "epic")
-      .slice(0, 3)
-
-    setPopularItems(popular)
-  }, [user, marketplaceItems])
-
+  // Fix: Optimize the quest-related useEffect
   useEffect(() => {
     if (!user) return
 
@@ -245,7 +250,7 @@ export default function MarketplacePage() {
     ].filter((q) => q.progress < 1 || (q.id === "collect_5_items" && q.progress < 5))
 
     setRelatedQuests(collectibleQuests)
-  }, [user])
+  }, [user?.inventory]); // Only depend on user.inventory, not the entire user object
 
   const filteredItems = marketplaceItems.filter((item) => {
     if (selectedCategory !== "all" && item.type !== selectedCategory) return false

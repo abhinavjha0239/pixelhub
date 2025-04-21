@@ -29,13 +29,18 @@ export default function Header() {
     return pathname === path
   }
 
+  // Prevent event propagation for header links to ensure they work in all pages
+  const handleLinkClick = (e: React.MouseEvent) => {
+    e.stopPropagation()
+  }
+
   return (
     <div>
       <nav id="header" className="sticky top-0 z-50 px-4 py-3 bg-[#0D0D0D] border-b border-neutral-200/10">
         <div className="container mx-auto flex justify-between items-center">
           {/* Logo */}
           <div className="flex items-center">
-            <Link href="/" className="text-xl font-bold">
+            <Link href="/" className="text-xl font-bold" onClick={handleLinkClick}>
               <span className="text-[#FF6B6B]">Pixel</span>
               <span className="text-[#4ECDC4]">Verse</span>
             </Link>
@@ -46,42 +51,49 @@ export default function Header() {
             <Link
               href="/"
               className={`transition-colors duration-300 ${isActivePath("/") ? "text-[#FF6B6B]" : "hover:text-[#FF6B6B]"} font-bold`}
+              onClick={handleLinkClick}
             >
               Home
             </Link>
             <Link
               href="/marketplace"
               className={`transition-colors duration-300 ${isActivePath("/marketplace") ? "text-[#FF6B6B]" : "hover:text-[#FF6B6B]"}`}
+              onClick={handleLinkClick}
             >
               Marketplace
             </Link>
             <Link
               href="/games"
               className={`transition-colors duration-300 ${isActivePath("/games") ? "text-[#FF6B6B]" : "hover:text-[#FF6B6B]"}`}
+              onClick={handleLinkClick}
             >
               Games
             </Link>
             <Link
               href="/quests"
               className={`transition-colors duration-300 ${isActivePath("/quests") ? "text-[#FF6B6B]" : "hover:text-[#FF6B6B]"}`}
+              onClick={handleLinkClick}
             >
               Quests
             </Link>
             <Link
               href="/gallery"
               className={`transition-colors duration-300 ${isActivePath("/gallery") ? "text-[#FF6B6B]" : "hover:text-[#FF6B6B]"}`}
+              onClick={handleLinkClick}
             >
               Gallery
             </Link>
             <Link
               href="/community"
               className={`transition-colors duration-300 ${isActivePath("/community") ? "text-[#FF6B6B]" : "hover:text-[#FF6B6B]"}`}
+              onClick={handleLinkClick}
             >
               Community
             </Link>
             <Link
               href="/profile"
               className={`transition-colors duration-300 ${isActivePath("/profile") ? "text-[#FF6B6B]" : "hover:text-[#FF6B6B]"}`}
+              onClick={handleLinkClick}
             >
               Profile
             </Link>
@@ -129,49 +141,70 @@ export default function Header() {
             <Link
               href="/"
               className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${isActivePath("/") ? "bg-neutral-700" : "hover:bg-neutral-700"}`}
-              onClick={closeMenu}
+              onClick={(e) => {
+                handleLinkClick(e);
+                closeMenu();
+              }}
             >
               Home
             </Link>
             <Link
               href="/marketplace"
               className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${isActivePath("/marketplace") ? "bg-neutral-700" : "hover:bg-neutral-700"}`}
-              onClick={closeMenu}
+              onClick={(e) => {
+                handleLinkClick(e);
+                closeMenu();
+              }}
             >
               Marketplace
             </Link>
             <Link
               href="/games"
               className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${isActivePath("/games") ? "bg-neutral-700" : "hover:bg-neutral-700"}`}
-              onClick={closeMenu}
+              onClick={(e) => {
+                handleLinkClick(e);
+                closeMenu();
+              }}
             >
               Games
             </Link>
             <Link
               href="/quests"
               className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${isActivePath("/quests") ? "bg-neutral-700" : "hover:bg-neutral-700"}`}
-              onClick={closeMenu}
+              onClick={(e) => {
+                handleLinkClick(e);
+                closeMenu();
+              }}
             >
               Quests
             </Link>
             <Link
               href="/gallery"
               className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${isActivePath("/gallery") ? "bg-neutral-700" : "hover:bg-neutral-700"}`}
-              onClick={closeMenu}
+              onClick={(e) => {
+                handleLinkClick(e);
+                closeMenu();
+              }}
             >
               Gallery
             </Link>
             <Link
               href="/community"
               className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${isActivePath("/community") ? "bg-neutral-700" : "hover:bg-neutral-700"}`}
-              onClick={closeMenu}
+              onClick={(e) => {
+                handleLinkClick(e);
+                closeMenu();
+              }}
             >
               Community
             </Link>
             <Link
               href="/profile"
               className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${isActivePath("/profile") ? "bg-neutral-700" : "hover:bg-neutral-700"}`}
-              onClick={closeMenu}
+              onClick={(e) => {
+                handleLinkClick(e);
+                closeMenu();
+              }}
             >
               Profile
             </Link>

@@ -654,23 +654,7 @@ export default function Games() {
   };
 
   return (
-    <section id="games" className="bg-[#0D0D0D] py-20 px-4 md:px-6 lg:px-8 relative">
-      {/* Section Header */}
-      <div className="container mx-auto mb-10">
-        <div className="flex items-center justify-center mb-6">
-          <div className="w-3 h-3 bg-[#FF6B6B] mr-1"></div>
-          <div className="w-3 h-3 bg-[#4ECDC4] mr-1"></div>
-          <div className="w-3 h-3 bg-[#FFE66D]"></div>
-          <h2 className="text-3xl md:text-4xl font-bold text-white text-center mx-4">Games</h2>
-          <div className="w-3 h-3 bg-[#FFE66D] ml-1"></div>
-          <div className="w-3 h-3 bg-[#4ECDC4] ml-1"></div>
-          <div className="w-3 h-3 bg-[#FF6B6B]"></div>
-        </div>
-        <p className="text-gray-300 text-center max-w-2xl mx-auto">
-          Play fun mini-games to earn PixelCoins, unlock achievements, and climb the leaderboards!
-        </p>
-      </div>
-
+    <section id="games" className="bg-[#0D0D0D] relative">
       {/* Render active boosts indicator */}
       {renderActiveBoosts()}
       
