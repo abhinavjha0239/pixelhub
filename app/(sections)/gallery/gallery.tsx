@@ -404,65 +404,6 @@ export default function Gallery() {
             </div>
           ))}
         </div>
-
-        {/* Pagination */}
-        <div className="flex justify-center mt-12">
-          <nav className="flex items-center space-x-2">
-            <a
-              href="#"
-              className="w-10 h-10 flex items-center justify-center rounded-md bg-[#1A1A1A] border border-neutral-700 text-gray-300 hover:bg-[#FF6B6B] hover:text-black hover:border-[#FF6B6B] transition-colors"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
-              </svg>
-            </a>
-            <a
-              href="#"
-              className="w-10 h-10 flex items-center justify-center rounded-md bg-[#FF6B6B] border border-[#FF6B6B] text-black font-bold"
-            >
-              1
-            </a>
-            <a
-              href="#"
-              className="w-10 h-10 flex items-center justify-center rounded-md bg-[#1A1A1A] border border-neutral-700 text-white hover:bg-[#FF6B6B] hover:text-black hover:border-[#FF6B6B] transition-colors"
-            >
-              2
-            </a>
-            <a
-              href="#"
-              className="w-10 h-10 flex items-center justify-center rounded-md bg-[#1A1A1A] border border-neutral-700 text-white hover:bg-[#FF6B6B] hover:text-black hover:border-[#FF6B6B] transition-colors"
-            >
-              3
-            </a>
-            <span className="text-gray-500 px-2">...</span>
-            <a
-              href="#"
-              className="w-10 h-10 flex items-center justify-center rounded-md bg-[#1A1A1A] border border-neutral-700 text-white hover:bg-[#FF6B6B] hover:text-black hover:border-[#FF6B6B] transition-colors"
-            >
-              12
-            </a>
-            <a
-              href="#"
-              className="w-10 h-10 flex items-center justify-center rounded-md bg-[#1A1A1A] border border-neutral-700 text-gray-300 hover:bg-[#FF6B6B] hover:text-black hover:border-[#FF6B6B] transition-colors"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </a>
-          </nav>
-        </div>
       </div>
 
       {/* Pixel art decoration absolute positioned elements */}
